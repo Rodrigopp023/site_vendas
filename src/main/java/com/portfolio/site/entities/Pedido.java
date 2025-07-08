@@ -1,7 +1,6 @@
 package com.portfolio.site.entities;
 
 import com.portfolio.site.enums.StatusPagamento;
-import com.portfolio.site.entities.Usuario;
 import jakarta.persistence.*;
 
 import java.time.Instant;
