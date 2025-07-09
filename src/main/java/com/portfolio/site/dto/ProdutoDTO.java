@@ -2,6 +2,7 @@ package com.portfolio.site.dto;
 
 import com.portfolio.site.entities.AvaliacaoProduto;
 import com.portfolio.site.entities.Categoria;
+import com.portfolio.site.entities.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,6 @@ public class ProdutoDTO {
     private List<Categoria> categorias = new ArrayList<>();
     private List<AvaliacaoProduto> avaliacaoProdutos = new ArrayList<>();
 
-    public ProdutoDTO() {
-    }
-
     public ProdutoDTO(Long id, String nome, String descricao, Double preco,
                       String imagemUrl, boolean disponivel) {
         this.id = id;
@@ -28,6 +26,15 @@ public class ProdutoDTO {
         this.preco = preco;
         this.imagemUrl = imagemUrl;
         this.disponivel = disponivel;
+    }
+
+    public ProdutoDTO(Produto entidade) {
+        id = entidade.getId();
+        nome = entidade.getNome();
+        descricao = entidade.getDescricao();
+        preco = entidade.getPreco();
+        imagemUrl = entidade.getImagemUrl();
+        disponivel = entidade.isDisponivel();
     }
 
     public Long getId() {
