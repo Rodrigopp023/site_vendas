@@ -15,8 +15,8 @@ public class ProdutoDTO {
     private String imagemUrl;
     private boolean disponivel;
 
-    private List<Categoria> categorias = new ArrayList<>();
-    private List<AvaliacaoProduto> avaliacaoProdutos = new ArrayList<>();
+    private List<CategoriaDTO> categorias = new ArrayList<>();
+    private List<AvaliacaoProdutoDTO> avaliacaoProdutos = new ArrayList<>();
 
     public ProdutoDTO(Long id, String nome, String descricao, Double preco,
                       String imagemUrl, boolean disponivel) {
@@ -35,61 +35,43 @@ public class ProdutoDTO {
         preco = entidade.getPreco();
         imagemUrl = entidade.getImagemUrl();
         disponivel = entidade.isDisponivel();
+        for (Categoria cat : entidade.getCategorias()) {
+            categorias.add(new CategoriaDTO(cat));
+        }
+        for (AvaliacaoProduto avali : entidade.getAvaliacoes()) {
+            avaliacaoProdutos.add(new AvaliacaoProdutoDTO(avali));
+        }
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public Double getPreco() {
         return preco;
-    }
-
-    public void setPreco(Double preco) {
-        this.preco = preco;
     }
 
     public String getImagemUrl() {
         return imagemUrl;
     }
 
-    public void setImagemUrl(String imagemUrl) {
-        this.imagemUrl = imagemUrl;
-    }
-
     public boolean isDisponivel() {
         return disponivel;
     }
 
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
-    }
-
-    public List<Categoria> getCategorias() {
+    public List<CategoriaDTO> getCategorias() {
         return categorias;
     }
 
-    public List<AvaliacaoProduto> getAvaliacaoProdutos() {
+    public List<AvaliacaoProdutoDTO> getAvaliacaoProdutos() {
         return avaliacaoProdutos;
     }
 }
