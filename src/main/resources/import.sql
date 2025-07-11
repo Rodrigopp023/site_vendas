@@ -28,9 +28,11 @@ INSERT INTO tb_item_pedido (quantidade, preco_unitario, pedido_id, produto_id) V
 INSERT INTO tb_item_pedido (quantidade, preco_unitario, pedido_id, produto_id) VALUES (1, 39.90, 1, 3);
 
 INSERT INTO tb_avaliacao (nota, comentario, data_avaliacao, produto_id, usuario_id) VALUES (5.0, 'Produto excelente!', TIMESTAMP WITH TIME ZONE '2025-07-03T13:00:00Z', 1, 2);
+INSERT INTO tb_avaliacao (nota, comentario, data_avaliacao, produto_id, usuario_id) VALUES (4.0, 'Produto de custo beneficio!', TIMESTAMP WITH TIME ZONE '2025-07-03T13:00:00Z', 2, 1);
 INSERT INTO tb_avaliacao (nota, comentario, data_avaliacao, produto_id, usuario_id) VALUES (3.5, 'Produto de baixa qualidade!', TIMESTAMP WITH TIME ZONE '2025-07-03T13:00:00Z', 3, 3);
 
 INSERT INTO tb_produto_avaliacao (avaliacao_id, produto_id) VALUES (1, 1);
+INSERT INTO tb_produto_avaliacao (avaliacao_id, produto_id) VALUES (2, 2);
 INSERT INTO tb_produto_avaliacao (avaliacao_id, produto_id) VALUES (2, 3);
 
 INSERT INTO tb_produto_categoria (categoria_id, produto_id) VALUES (1, 1);
