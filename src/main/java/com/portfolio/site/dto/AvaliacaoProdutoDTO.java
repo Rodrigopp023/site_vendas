@@ -11,14 +11,7 @@ public class AvaliacaoProdutoDTO {
     private Instant dataAvaliacao;
     private UsuarioDTO usuario;
 
-
-    public AvaliacaoProdutoDTO(Long id, Double nota, String comentario,
-                               Instant dataAvaliacao, UsuarioDTO usuario) {
-        this.id = id;
-        this.nota = nota;
-        this.comentario = comentario;
-        this.dataAvaliacao = dataAvaliacao;
-        this.usuario = usuario;
+    public AvaliacaoProdutoDTO() {
     }
 
     public AvaliacaoProdutoDTO(AvaliacaoProduto entidade) {

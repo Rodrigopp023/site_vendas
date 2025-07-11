@@ -6,9 +6,7 @@ public class UsuarioDTO {
     private Long id;
     private String nome;
 
-    public UsuarioDTO(Long id, String nome) {
-        this.id = id;
-        this.nome = nome;
+    public UsuarioDTO() {
     }
 
     public UsuarioDTO(Usuario entidade) {

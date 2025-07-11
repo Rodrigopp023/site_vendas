@@ -18,14 +18,7 @@ public class ProdutoDTO {
     private List<CategoriaDTO> categorias = new ArrayList<>();
     private List<AvaliacaoProdutoDTO> avaliacaoProdutos = new ArrayList<>();
 
-    public ProdutoDTO(Long id, String nome, String descricao, Double preco,
-                      String imagemUrl, boolean disponivel) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.imagemUrl = imagemUrl;
-        this.disponivel = disponivel;
+    public ProdutoDTO() {
     }
 
     public ProdutoDTO(Produto entidade) {
