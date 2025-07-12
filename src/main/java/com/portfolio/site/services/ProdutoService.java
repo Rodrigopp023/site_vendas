@@ -8,9 +8,11 @@ import com.portfolio.site.entities.Categoria;
 import com.portfolio.site.entities.Produto;
 import com.portfolio.site.entities.Usuario;
 import com.portfolio.site.repositories.ProdutoRepository;
+import com.portfolio.site.services.exceptions.DatabaseException;
 import com.portfolio.site.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +47,19 @@ public class ProdutoService {
         }
         catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Recurso não enontrado");
+        }
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        if (!repositorio.existsById(id)) {
+            throw new ResourceNotFoundException("Recurso não enontrado");
+        }
+        try {
+            repositorio.deleteById(id);
+        }
+        catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Falha de integridade referencial");
         }
     }
 
