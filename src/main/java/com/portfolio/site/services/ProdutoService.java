@@ -9,6 +9,7 @@ import com.portfolio.site.entities.Produto;
 import com.portfolio.site.entities.Usuario;
 import com.portfolio.site.repositories.ProdutoRepository;
 import com.portfolio.site.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +33,19 @@ public class ProdutoService {
         copiaDtoParaEntidade(dto, entidade);
         entidade = repositorio.save(entidade);
         return new ProdutoDTO(entidade);
+    }
+
+    @Transactional
+    public ProdutoDTO update(Long id, ProdutoDTO dto) {
+        try {
+            Produto entidade = repositorio.getReferenceById(id);
+            copiaDtoParaEntidade(dto, entidade);
+            entidade = repositorio.save(entidade);
+            return new ProdutoDTO(entidade);
+        }
+        catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Recurso não enontrado");
+        }
     }
 
     private void copiaDtoParaEntidade(ProdutoDTO dto, Produto endidade) {
