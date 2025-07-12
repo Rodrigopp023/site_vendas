@@ -38,4 +38,10 @@ public class ProdutoController {
     dto = servico.update(id, dto);
     return ResponseEntity.ok(dto);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        servico.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
