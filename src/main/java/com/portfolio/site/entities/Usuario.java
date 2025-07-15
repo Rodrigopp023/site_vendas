@@ -92,6 +92,19 @@ public class Usuario {
         return avaliacao;
     }
 
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
+    public boolean hasRole(String roleNome) {
+        for (Role role : roles) {
+            if (role.getAuthority().equals(roleNome)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
