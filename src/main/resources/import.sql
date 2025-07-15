@@ -1,9 +1,9 @@
-INSERT INTO tb_usuario (id, nome, data_nascimento, email, senha) VALUES (1, 'Carlos Castro', '1985-10-10', 'carlos@gmail.com', '123456');
-INSERT INTO tb_usuario (id, nome, data_nascimento, email, senha) VALUES (2, 'João Silva', '1990-01-15', 'joao@gmail.com', '123456');
-INSERT INTO tb_usuario (id, nome, data_nascimento, email, senha) VALUES (3, 'Maria Oliveira', '1995-03-20', 'maria@gmail.com', '123456');
+INSERT INTO tb_usuario (id, nome, data_nascimento, email, senha) VALUES (1, 'Carlos Castro', '1985-10-10', 'carlos@gmail.com', '$2a$10$LUxT8HFGm8IVB8jf.e.AfudaT4/ruW/6qmtrgQF.ErskI8pgpgJ8a');
+INSERT INTO tb_usuario (id, nome, data_nascimento, email, senha) VALUES (2, 'João Silva', '1990-01-15', 'joao@gmail.com', '$2a$10$LUxT8HFGm8IVB8jf.e.AfudaT4/ruW/6qmtrgQF.ErskI8pgpgJ8a');
+INSERT INTO tb_usuario (id, nome, data_nascimento, email, senha) VALUES (3, 'Maria Oliveira', '1995-03-20', 'maria@gmail.com', '$2a$10$LUxT8HFGm8IVB8jf.e.AfudaT4/ruW/6qmtrgQF.ErskI8pgpgJ8a');
 
-INSERT INTO tb_role (perfil) VALUES ('ROLE_ADMIN');
-INSERT INTO tb_role (perfil) VALUES ('ROLE_CLIENT');
+INSERT INTO tb_role (authority) VALUES ('ROLE_ADMIN');
+INSERT INTO tb_role (authority) VALUES ('ROLE_CLIENT');
 
 INSERT INTO tb_usuario_role (usuario_id, role_id) VALUES (1, 1);
 INSERT INTO tb_usuario_role (usuario_id, role_id) VALUES (2, 2);
