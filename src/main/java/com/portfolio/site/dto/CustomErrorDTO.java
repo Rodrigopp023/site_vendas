@@ -1,8 +1,14 @@
 package com.portfolio.site.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.Instant;
 
 public class CustomErrorDTO {
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING,
+            pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",
+            timezone = "GMT")
     private Instant timestamp;
     private Integer status;
     private String error;
