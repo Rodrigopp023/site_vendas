@@ -19,7 +19,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.OAuth2Token;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.InMemoryOAuth2AuthorizationService;
@@ -50,13 +49,13 @@ import java.util.UUID;
 public class AuthorizationServerConfig {
 
 
-    @Value("${security.client-id}")
-    private String clientId;
+    @Value("${security.login-client}")
+    private String loginCliente;
 
-    @Value("${security.client-secret}")
-    private String clientSecret;
+    @Value("${security.login-admin}")
+    private String loginAdmin;
 
-    @Value("${security.jwt.duration}")
+    @Value("${security.jwt.duracao}")
     private Integer jwtDurationSeconds;
 
     @Autowired
@@ -66,6 +65,7 @@ public class AuthorizationServerConfig {
     @Order(2)
     public SecurityFilterChain asSecurityFilterChain(HttpSecurity http) throws Exception {
 
+        //noinspection removal
         OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
 
         // @formatter:off
@@ -100,8 +100,8 @@ public class AuthorizationServerConfig {
         // @formatter:off
         RegisteredClient registeredClient = RegisteredClient
                 .withId(UUID.randomUUID().toString())
-                .clientId(clientId)
-                .clientSecret(passwordEncoder().encode(clientSecret))
+                .clientId(loginCliente)
+                .clientSecret(passwordEncoder().encode(loginAdmin))
                 .scope("read")
                 .scope("write")
                 .authorizationGrantType(new AuthorizationGrantType("password"))
@@ -158,10 +158,6 @@ public class AuthorizationServerConfig {
         };
     }
 
-    @Bean
-    public JwtDecoder jwtDecoder(JWKSource<SecurityContext> jwkSource) {
-        return OAuth2AuthorizationServerConfiguration.jwtDecoder(jwkSource);
-    }
 
     @Bean
     public JWKSource<SecurityContext> jwkSource() {
