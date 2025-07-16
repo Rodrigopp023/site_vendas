@@ -8,6 +8,7 @@ INSERT INTO tb_role (authority) VALUES ('ROLE_CLIENT');
 INSERT INTO tb_usuario_role (usuario_id, role_id) VALUES (1, 1);
 INSERT INTO tb_usuario_role (usuario_id, role_id) VALUES (2, 2);
 INSERT INTO tb_usuario_role (usuario_id, role_id) VALUES (3, 2);
+INSERT INTO tb_usuario_role (usuario_id, role_id) VALUES (1, 2);
 
 INSERT INTO tb_categoria (id, nome) VALUES (1, 'Camisetas Personalizadas');
 
